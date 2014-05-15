@@ -1,3 +1,9 @@
+#
+# Cookbook Name:: redis
+# Provider:: pool
+#
+# Copyright 2014, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
+
 def whyrun_supported?
   true
 end

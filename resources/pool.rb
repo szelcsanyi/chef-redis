@@ -1,3 +1,9 @@
+#
+# Cookbook Name:: redis
+# Resource:: pool
+#
+# Copyright 2014, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
+
 actions :create, :remove
 
 attribute :name, :kind_of => String, :name_attribute => true
