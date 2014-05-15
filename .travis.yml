@@ -6,3 +6,4 @@ rvm:
 
 script:
   - bundle exec foodcritic -f any . --tags ~FC015
+
