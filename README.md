@@ -1,5 +1,6 @@
 # redis cookbook
 [![Build Status](https://travis-ci.org/szelcsanyi/chef-redis.svg?branch=master)](https://travis-ci.org/szelcsanyi/chef-redis)
+[![security](https://hakiri.io/github/szelcsanyi/chef-redis/master.svg)](https://hakiri.io/github/szelcsanyi/chef-redis/master)
 
 ## Description
 
