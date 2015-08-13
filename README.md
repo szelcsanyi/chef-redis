@@ -44,12 +44,12 @@ Currently only one redis version is supported.
 
 #### A redis instance with default settings:
 ```ruby
-redis_pool "basic_example"
+L7_redis_pool "basic_example"
 ```
 
 #### A redis instance with custom parameters:
 ```ruby
-redis_pool "extended_example" do
+L7_redis_pool "extended_example" do
     port '6390'
     bind '0.0.0.0'
     databases 2
