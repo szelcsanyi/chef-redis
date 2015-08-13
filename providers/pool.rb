@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: redis
+# Cookbook Name:: L7-redis
 # Provider:: pool
 #
-# Copyright 2014, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
+# Copyright 2015, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
 
 def whyrun_supported?
   true
@@ -43,7 +43,7 @@ action :create do
 
   t = template "/etc/init.d/redis-server-#{new_resource.name}" do
     source 'etc/init.d/redis-server-pool.erb'
-    cookbook 'redis'
+    cookbook 'L7-redis'
     owner 'root'
     group 'root'
     mode '0755'
@@ -53,7 +53,7 @@ action :create do
 
   t = template "/etc/redis/redis_#{new_resource.name}.conf" do
     source 'etc/redis/redis_pool.conf.erb'
-    cookbook 'redis'
+    cookbook 'L7-redis'
     owner 'root'
     group 'root'
     mode '0644'

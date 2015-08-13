@@ -1,6 +1,7 @@
-# redis cookbook
+# L7-redis cookbook
 [![Build Status](https://travis-ci.org/szelcsanyi/chef-redis.svg?branch=master)](https://travis-ci.org/szelcsanyi/chef-redis)
 [![security](https://hakiri.io/github/szelcsanyi/chef-redis/master.svg)](https://hakiri.io/github/szelcsanyi/chef-redis/master)
+[![Cookbook Version](https://img.shields.io/cookbook/v/L7-redis.svg?style=flat)](https://supermarket.chef.io/cookbooks/L7-redis)
 
 ## Description
 
@@ -8,19 +9,19 @@ Configures [Redis](http://redis.io/) via Opscode Chef
 
 It can handle multiple instances with different configuratioins on the same machine.
 
-Currently only one version is supported.
+Currently only one redis version is supported.
 
 ## Supported Platforms
 
-* Ubuntu
-* Debian
+* Ubuntu 12.04+
+* Debian 7.0+
 
 ## Recipes
 
-* `redis` - The default no-op recipe.
+* `L7-redis` - The default no-op recipe.
 
 ## Providers
-* `redis_pool` - Configures redis instance
+* `L7_redis_pool` - Configures redis instance
 
 ## Usage
 ###Provider parameters:
@@ -49,10 +50,10 @@ redis_pool "basic_example"
 #### A redis instance with custom parameters:
 ```ruby
 redis_pool "extended_example" do
-    port "6390"
-    bind "0.0.0.0"
+    port '6390'
+    bind '0.0.0.0'
     databases 2
-    datadir "/opt/custom_redis"
+    datadir '/opt/custom_redis'
 end
 ```
 
@@ -69,8 +70,7 @@ Implement multiversion support.
 
 ## License
 
-* Freely distributable and licensed under the [MIT license](http://szelcsanyi.mit-license.org/2014/license.html).
-* Copyright (c) 2014 Gabor Szelcsanyi
+* Freely distributable and licensed under the [MIT license](http://szelcsanyi.mit-license.org/2015/license.html).
+* Copyright (c) 2015 Gabor Szelcsanyi
 
 [![image](https://ga-beacon.appspot.com/UA-56493884-1/chef-redis/README.md)](https://github.com/szelcsanyi/chef-redis)
-
