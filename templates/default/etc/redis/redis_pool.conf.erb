@@ -34,6 +34,10 @@ rdbchecksum yes
 dbfilename dump-<%= @name %>.rdb
 dir <%= @datadir %>
 
+<% unless @requirepass.nil? %>
+requirepass <%= @requirepass %>
+<% end %>
+
 ###### REPLICATION ######
 <% unless @slaveof.nil? %>slaveof <%= @slaveof %><% end %>
 slave-serve-stale-data yes

@@ -40,16 +40,17 @@ Currently only one redis version is supported.
 * `slaveof`: master server ip address (default no master)
 * `slave_read_only`: is slave read only (default "yes")
 * `snapshotting`: snapshotting (default true)
+* `requirepass`: authentication password (default nil)
 
 
 #### A redis instance with default settings:
 ```ruby
-L7_redis_pool "basic_example"
+L7_redis_pool 'basic_example'
 ```
 
 #### A redis instance with custom parameters:
 ```ruby
-L7_redis_pool "extended_example" do
+L7_redis_pool 'extended_example' do
     port '6390'
     bind '0.0.0.0'
     databases 2
