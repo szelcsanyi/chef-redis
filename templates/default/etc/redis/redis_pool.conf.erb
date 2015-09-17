@@ -43,6 +43,8 @@ requirepass <%= @requirepass %>
 slave-serve-stale-data yes
 slave-read-only <%= @slave_read_only %>
 
+<% unless @masterauth.nil? %>masterauth <%= @masterauth %><% end %>
+
 ###### LIMITS ######
 maxclients 10000
 maxmemory-policy <%= @maxmemory_policy %>

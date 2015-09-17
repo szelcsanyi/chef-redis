@@ -27,6 +27,8 @@ attribute :maxmemory_samples, kind_of: [Integer, String], default: '3'
 attribute :slaveof, kind_of: [String, NilClass], default: nil
 attribute :slave_read_only, kind_of: [String], default: 'yes'
 
+attribute :masterauth, kind_of: [String, NilClass], default: nil
+
 attribute :snapshotting, kind_of: [TrueClass, FalseClass], default: true
 
 attribute :requirepass, kind_of: [String, NilClass], default: nil

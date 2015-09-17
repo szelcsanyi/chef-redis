@@ -73,7 +73,8 @@ action :create do
       slave_read_only: new_resource.slave_read_only,
       snapshotting: new_resource.snapshotting,
       unixsocketperm: new_resource.unixsocketperm,
-      requirepass: new_resource.requirepass
+      requirepass: new_resource.requirepass,
+      masterauth: new_resource.masterauth
     )
     notifies :restart, "service[redis-server-#{new_resource.name}]", :delayed
   end

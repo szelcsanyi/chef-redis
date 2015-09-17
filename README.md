@@ -37,8 +37,9 @@ Currently only one redis version is supported.
 * `maxmemory`: maximum memory to use (default "1gb")
 * `maxmemory_policy`: eviction policy (default "volatile-lru")
 * `maxmemory_samples`: memory samples (default 3)
-* `slaveof`: master server ip address (default no master)
-* `slave_read_only`: is slave read only (default "yes")
+* `slaveof`: master server ip address and port (default no master)
+* `slave_read_only`: is slave read only? (default "yes")
+* `masterauth`: password for master server
 * `snapshotting`: snapshotting (default true)
 * `requirepass`: authentication password (default nil)
 
