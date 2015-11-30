@@ -7,7 +7,7 @@
 actions :create, :remove
 
 attribute :name, kind_of: String, name_attribute: true
-attribute :cookbook, kind_of: String, default: 'redis'
+attribute :cookbook, kind_of: String, default: 'L7-redis'
 attribute :port, kind_of: [Integer, String], default: '6379'
 attribute :bind, kind_of: [String], default: '127.0.0.1'
 attribute :unixsocketperm, kind_of: [Integer, String], default: '755'

@@ -20,6 +20,15 @@ action :remove do
   file "/etc/redis_#{new_resource.name}.conf" do
     action :delete
   end
+
+  cron_d "redis-#{new_resource.name}-monitoring" do
+    action :delete
+  end
+
+  file "/tmp/redis-monitoring-status-#{new_resource.port}" do
+    action :delete
+  end
+
 end
 
 action :create do
@@ -83,6 +92,17 @@ action :create do
   service "redis-server-#{new_resource.name}" do
     action [:enable, :start]
     supports status: true, restart: true
+  end
+
+  cron_d "redis-#{new_resource.name}-monitoring" do
+    hour '*'
+    minute '*'
+    day '*'
+    month '*'
+    weekday '*'
+    command "if timeout 3 /usr/bin/redis-cli -s /var/run/redis/redis-#{new_resource.name}.sock -a '#{new_resource.requirepass}' INFO > /tmp/redis-monitoring-status-#{new_resource.port}.tmp; then sleep 1; mv /tmp/redis-monitoring-status-#{new_resource.port}.tmp /tmp/redis-monitoring-status-#{new_resource.port}; else rm -f /tmp/redis-monitoring-status-#{new_resource.port}.tmp; fi"
+    user 'root'
+    shell '/bin/bash'
   end
 
   # stop default instance
