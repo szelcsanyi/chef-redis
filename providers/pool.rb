@@ -81,6 +81,8 @@ action :create do
       slaveof: new_resource.slaveof,
       slave_read_only: new_resource.slave_read_only,
       snapshotting: new_resource.snapshotting,
+      snapshot_rules: new_resource.snapshot_rules,
+      stop_writes_on_bgsave_error: new_resource.stop_writes_on_bgsave_error,
       unixsocketperm: new_resource.unixsocketperm,
       requirepass: new_resource.requirepass,
       masterauth: new_resource.masterauth

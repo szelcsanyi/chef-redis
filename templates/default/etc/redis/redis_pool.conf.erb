@@ -22,12 +22,12 @@ databases <%= @databases %>
 
 <% if @snapshotting %>
 ###### SNAPSHOTTING ######
-save 900 1
-save 300 10
-save 60 10000
+<% @snapshot_rules.each do |data| -%>
+save <%= data %>
+<% end -%>
 <% end %>
 
-stop-writes-on-bgsave-error yes
+stop-writes-on-bgsave-error <%= @stop_writes_on_bgsave_error %>
 rdbcompression no
 rdbchecksum yes
 
