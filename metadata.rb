@@ -4,7 +4,7 @@ license          'MIT'
 description      'Installs/Configures redis, multi instace support'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 name             'L7-redis'
-version          '1.0.5'
+version          '1.0.6'
 source_url       'https://github.com/szelcsanyi/chef-redis'
 issues_url       'https://github.com/szelcsanyi/chef-redis/issues'
 

@@ -30,7 +30,6 @@ attribute :slave_read_only, kind_of: [String], default: 'yes'
 attribute :masterauth, kind_of: [String, NilClass], default: nil
 
 attribute :snapshotting, kind_of: [TrueClass, FalseClass], default: true
-
 attribute :snapshot_rules, kind_of: Array, default: ['900 1', '300 10', '60 10000']
 
 attribute :requirepass, kind_of: [String, NilClass], default: nil

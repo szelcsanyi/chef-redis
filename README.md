@@ -42,7 +42,8 @@ Currently only one redis version is supported.
 * `masterauth`: password for master server
 * `snapshotting`: snapshotting (default true)
 * `requirepass`: authentication password (default nil)
-
+* `snapshot_rules`: snapshot rules (default [ "900 1", "300 10", "60 10000" ])
+* `stop_writes_on_bgsave_error`: stop writes on error (default "yes")
 
 #### A redis instance with default settings:
 ```ruby
