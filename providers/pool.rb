@@ -85,7 +85,13 @@ action :create do
       stop_writes_on_bgsave_error: new_resource.stop_writes_on_bgsave_error,
       unixsocketperm: new_resource.unixsocketperm,
       requirepass: new_resource.requirepass,
-      masterauth: new_resource.masterauth
+      masterauth: new_resource.masterauth,
+      appendonly: new_resource.appendonly,
+      appendfsync: new_resource.appendfsync,
+      no_appendfsync_on_rewrite: new_resource.no_appendfsync_on_rewrite,
+      auto_aof_rewrite_percentage: new_resource.auto_aof_rewrite_percentage,
+      auto_aof_rewrite_min_size: new_resource.auto_aof_rewrite_min_size,
+      aof_rewrite_incremental_fsync: new_resource.aof_rewrite_incremental_fsync
     )
     notifies :restart, "service[redis-server-#{new_resource.name}]", :delayed
   end
