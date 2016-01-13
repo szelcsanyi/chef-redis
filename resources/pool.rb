@@ -36,6 +36,13 @@ attribute :requirepass, kind_of: [String, NilClass], default: nil
 
 attribute :stop_writes_on_bgsave_error, kind_of: String, default: 'yes'
 
+attribute :appendonly, kind_of: String, default: 'yes'
+attribute :appendfsync, kind_of: String, default: 'everysec'
+attribute :no_appendfsync_on_rewrite, kind_of: String, default: 'no'
+attribute :auto_aof_rewrite_percentage, kind_of: [Integer, String], default: '100'
+attribute :auto_aof_rewrite_min_size, kind_of: String, default: '64mb'
+attribute :aof_rewrite_incremental_fsync, kind_of: String, default: 'yes'
+
 def initialize(*args)
   super
   @action = :create

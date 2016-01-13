@@ -51,12 +51,12 @@ maxmemory-policy <%= @maxmemory_policy %>
 maxmemory-samples <%= @maxmemory_samples %>
 
 ###### APPENDONLY ######
-appendonly yes
+appendonly <%= @appendonly %>
 appendfilename appendonly-<%= @name %>.aof
-appendfsync everysec
-no-appendfsync-on-rewrite no
-auto-aof-rewrite-percentage 100
-auto-aof-rewrite-min-size 64mb
+appendfsync <%= @appendfsync %>
+no-appendfsync-on-rewrite <%= @no_appendfsync_on_rewrite %>
+auto-aof-rewrite-percentage <%= @auto_aof_rewrite_percentage %>
+auto-aof-rewrite-min-size <%= @auto_aof_rewrite_min_size %>
 
 ###### LUA ######
 lua-time-limit 5000
@@ -81,4 +81,4 @@ client-output-buffer-limit slave 256mb 64mb 60
 client-output-buffer-limit pubsub 32mb 8mb 60
 
 hz 10
-aof-rewrite-incremental-fsync yes
+aof-rewrite-incremental-fsync <%= @aof_rewrite_incremental_fsync %>
