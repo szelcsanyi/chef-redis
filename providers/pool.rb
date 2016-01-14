@@ -2,7 +2,7 @@
 # Cookbook Name:: L7-redis
 # Provider:: pool
 #
-# Copyright 2015, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
+# Copyright 2016, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
 
 def whyrun_supported?
   true
