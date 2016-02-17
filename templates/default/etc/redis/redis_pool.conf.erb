@@ -3,82 +3,20 @@
 # Environment: <%= node.chef_environment %>
 ###
 
-###### BASE ######
-daemonize yes
-pidfile /var/run/redis/redis-server-<%= @name %>.pid
-
-port <%= @port %>
-bind <%= @bind %>
-unixsocket /var/run/redis/redis-<%= @name %>.sock
-unixsocketperm <%= @unixsocketperm %>
-
-timeout <%= @timeout %>
-tcp-keepalive <%= @tcp_keepalive %>
-
-loglevel <%= @loglevel %>
-logfile /var/log/redis/redis-server-<%= @name %>.log
-
-databases <%= @databases %>
-
-<% if @snapshotting %>
-###### SNAPSHOTTING ######
-<% @snapshot_rules.each do |data| -%>
-save <%= data %>
-<% end -%>
-<% end %>
-
-stop-writes-on-bgsave-error <%= @stop_writes_on_bgsave_error %>
-rdbcompression no
-rdbchecksum yes
-
-dbfilename dump-<%= @name %>.rdb
-dir <%= @datadir %>
-
-<% unless @requirepass.nil? %>
-requirepass <%= @requirepass %>
-<% end %>
-
-###### REPLICATION ######
-<% unless @slaveof.nil? %>slaveof <%= @slaveof %><% end %>
-slave-serve-stale-data yes
-slave-read-only <%= @slave_read_only %>
-
-<% unless @masterauth.nil? %>masterauth <%= @masterauth %><% end %>
-
-###### LIMITS ######
-maxclients 10000
-maxmemory-policy <%= @maxmemory_policy %>
-maxmemory-samples <%= @maxmemory_samples %>
-
-###### APPENDONLY ######
-appendonly <%= @appendonly %>
-appendfilename appendonly-<%= @name %>.aof
-appendfsync <%= @appendfsync %>
-no-appendfsync-on-rewrite <%= @no_appendfsync_on_rewrite %>
-auto-aof-rewrite-percentage <%= @auto_aof_rewrite_percentage %>
-auto-aof-rewrite-min-size <%= @auto_aof_rewrite_min_size %>
-
-###### LUA ######
-lua-time-limit 5000
-
-###### SLOW LOG ######
-slowlog-log-slower-than 10000
-slowlog-max-len 128
-
-###### ADVANCED CONFIG ######
-hash-max-ziplist-entries 512
-hash-max-ziplist-value 64
-list-max-ziplist-entries 512
-list-max-ziplist-value 64
-
-set-max-intset-entries 512
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-activerehashing yes
-
-client-output-buffer-limit normal 0 0 0
-client-output-buffer-limit slave 256mb 64mb 60
-client-output-buffer-limit pubsub 32mb 8mb 60
-
-hz 10
-aof-rewrite-incremental-fsync <%= @aof_rewrite_incremental_fsync %>
+<%- @config.sort.each do |key, values| -%>
+<%- [*values].each do |value| -%>
+<%- next if value.nil? -%>
+<%= key %> <%=
+  case value
+  when String
+    value
+  when TrueClass
+    1
+  when FalseClass
+    0
+  else
+    value
+  end
+%>
+<%- end -%>
+<%- end -%>
