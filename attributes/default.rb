@@ -9,7 +9,11 @@ default['L7-redis']['config']['tcp-keepalive'] = '0'
 default['L7-redis']['config']['loglevel'] = 'notice'
 default['L7-redis']['config']['logfile'] = nil
 default['L7-redis']['config']['databases'] = '16'
-default['L7-redis']['config']['save'] = ['900 1', '300 10', '60 10000']
+default['L7-redis']['config']['save'] = [
+  '900 1',
+  '300 10',
+  '60 10000'
+]
 default['L7-redis']['config']['stop-writes-on-bgsave-error'] = 'yes'
 default['L7-redis']['config']['rdbcompression'] = 'no'
 default['L7-redis']['config']['rdbchecksum'] = 'yes'
