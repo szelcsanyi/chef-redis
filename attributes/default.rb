@@ -41,8 +41,10 @@ default['L7-redis']['config']['set-max-intset-entries'] = '512'
 default['L7-redis']['config']['zset-max-ziplist-entries'] = '128'
 default['L7-redis']['config']['zset-max-ziplist-value'] = '64'
 default['L7-redis']['config']['activerehashing'] = 'yes'
-default['L7-redis']['config']['client-output-buffer-limit'] = 'normal 0 0 0'
-default['L7-redis']['config']['client-output-buffer-limit'] = 'slave 256mb 64mb 60'
-default['L7-redis']['config']['client-output-buffer-limit'] = 'pubsub 32mb 8mb 60'
+default['L7-redis']['config']['client-output-buffer-limit'] = [
+  'normal 0 0 0',
+  'slave 256mb 64mb 60',
+  'pubsub 32mb 8mb 60',
+]
 default['L7-redis']['config']['hz'] = '10'
 default['L7-redis']['config']['aof-rewrite-incremental-fsync'] = 'yes'
