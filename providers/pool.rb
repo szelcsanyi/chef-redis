@@ -46,7 +46,6 @@ action :create do
   inst_config['tcp-keepalive'] = new_resource.tcp_keepalive unless new_resource.tcp_keepalive.nil?
   inst_config['loglevel'] = new_resource.loglevel unless new_resource.loglevel.nil?
   inst_config['databases'] = new_resource.databases unless new_resource.databases.nil?
-  inst_config['dir'] = new_resource.datadir unless new_resource.datadir.nil?
   # inst_config['maxmemory'] = new_resource.maxmemory unless new_resource.maxmemory.nil?
   inst_config['maxmemory-policy'] = new_resource.maxmemory_policy unless new_resource.maxmemory_policy.nil?
   inst_config['maxmemory-samples'] = new_resource.maxmemory_samples unless new_resource.maxmemory_samples.nil?
@@ -68,6 +67,15 @@ action :create do
     inst_config['save'] = new_resource.snapshot_rules
   elsif new_resource.snapshotting == false
     inst_config['save'] = nil
+  end
+
+  # dir precedence: config[dir], old datadir parameter, '/var/lib/redis-poolname'
+  unless inst_config.key?('dir')
+    unless new_resource.datadir.nil?
+      inst_config['dir'] = new_resource.datadir
+    else
+      inst_config['dir'] = "/var/lib/redis-#{new_resource.name}"
+    end
   end
 
   # override values of per-instance settings if not configured
