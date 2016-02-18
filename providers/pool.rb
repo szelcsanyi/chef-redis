@@ -70,7 +70,7 @@ action :create do
   end
 
   # dir precedence: config[dir], old datadir parameter, '/var/lib/redis-poolname'
-  if !inst_config.key?('dir')
+  unless inst_config.key?('dir')
     if !new_resource.datadir.nil?
       inst_config['dir'] = new_resource.datadir
     else
