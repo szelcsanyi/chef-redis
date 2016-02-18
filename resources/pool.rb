@@ -18,7 +18,7 @@ attribute :tcp_keepalive, kind_of: [Integer, String, NilClass], default: nil
 attribute :loglevel, kind_of: [String, NilClass], default: nil
 
 attribute :databases, kind_of: [Integer, String, NilClass], default: nil
-attribute :datadir, kind_of: [String, NilClass, NilClass], default: nil
+attribute :datadir, kind_of: [String, NilClass], default: nil
 
 attribute :maxmemory, kind_of: [String, NilClass], default: nil
 attribute :maxmemory_policy, kind_of: [String, NilClass], default: nil
