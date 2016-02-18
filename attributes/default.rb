@@ -44,7 +44,7 @@ default['L7-redis']['config']['activerehashing'] = 'yes'
 default['L7-redis']['config']['client-output-buffer-limit'] = [
   'normal 0 0 0',
   'slave 256mb 64mb 60',
-  'pubsub 32mb 8mb 60',
+  'pubsub 32mb 8mb 60'
 ]
 default['L7-redis']['config']['hz'] = '10'
 default['L7-redis']['config']['aof-rewrite-incremental-fsync'] = 'yes'
