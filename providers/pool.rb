@@ -37,7 +37,7 @@ action :create do
 
   # allow per-instance config override
   inst_config = node['L7-redis']['config'].to_hash
-  inst_config = node['L7-redis']['config'].merge(new_resource.config) unless new_resource.config.nil?
+  inst_config = inst_config.merge(new_resource.config) unless new_resource.config.nil?
 
   # support old resource settings
   inst_config['port'] = new_resource.port unless new_resource.port.nil?
