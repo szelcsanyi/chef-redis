@@ -7,7 +7,7 @@
 
 Configures [Redis](http://redis.io/) via Opscode Chef
 
-It can handle multiple instances with different configuratioins on the same machine.
+It can handle multiple instances with different configurations on the same machine.
 
 Currently only one redis version is supported.
 
@@ -50,6 +50,7 @@ Currently only one redis version is supported.
 * `auto_aof_rewrite_percentage`: (default 100)
 * `auto_aof_rewrite_min_size`: (default "64mb")
 * `aof_rewrite_incremental_fsync`: (default: "yes")
+* `config`: configuration hash with parameters like above
 
 #### A redis instance with default settings:
 ```ruby
@@ -63,6 +64,29 @@ L7_redis_pool 'extended_example' do
     bind '0.0.0.0'
     databases 2
     datadir '/opt/custom_redis'
+end
+```
+
+#### A redis instance with default attributes overriden:
+```ruby
+node.override['L7-redis']['config']['databases'] = 16
+node.override['L7-redis']['config']['repl-backlog-size'] = '256mb'
+
+L7_redis_pool 'redis6379' do
+  config ({
+    'port' => '6379',
+    'bind' => '0.0.0.0',
+    'maxmemory' => '100mb'
+  })
+end
+
+L7_redis_pool 'redis6380' do
+  config ({
+    'port' => '6380',
+    'bind' => '127.0.0.1',
+    'maxmemory' => '10mb',
+    'slaveof' => '127.0.0.1 6379'
+  })
 end
 ```
 

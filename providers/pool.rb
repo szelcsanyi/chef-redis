@@ -46,7 +46,7 @@ action :create do
   inst_config['tcp-keepalive'] = new_resource.tcp_keepalive unless new_resource.tcp_keepalive.nil?
   inst_config['loglevel'] = new_resource.loglevel unless new_resource.loglevel.nil?
   inst_config['databases'] = new_resource.databases unless new_resource.databases.nil?
-  # inst_config['maxmemory'] = new_resource.maxmemory unless new_resource.maxmemory.nil?
+  inst_config['maxmemory'] = new_resource.maxmemory unless new_resource.maxmemory.nil?
   inst_config['maxmemory-policy'] = new_resource.maxmemory_policy unless new_resource.maxmemory_policy.nil?
   inst_config['maxmemory-samples'] = new_resource.maxmemory_samples unless new_resource.maxmemory_samples.nil?
   inst_config['slaveof'] = new_resource.slaveof unless new_resource.slaveof.nil?
