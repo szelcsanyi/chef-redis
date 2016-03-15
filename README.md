@@ -67,7 +67,7 @@ L7_redis_pool 'extended_example' do
 end
 ```
 
-#### A redis instance with default attributes overriden:
+#### A redis instance with default attributes overridden:
 ```ruby
 node.override['L7-redis']['config']['databases'] = 16
 node.override['L7-redis']['config']['repl-backlog-size'] = '256mb'
