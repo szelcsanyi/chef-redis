@@ -129,7 +129,7 @@ action :create do
     day '*'
     month '*'
     weekday '*'
-    command "if timeout 3 /usr/bin/redis-cli -s /var/run/redis/redis-#{new_resource.name}.sock -a '#{inst_config['requirepass']}' INFO > /tmp/redis-monitoring-status-#{inst_config['port']}.tmp; then sleep 1; mv /tmp/redis-monitoring-status-#{inst_config['port']}.tmp /tmp/redis-monitoring-status-#{inst_config['port']}; else rm -f /tmp/redis-monitoring-status-#{inst_config['port']}.tmp; fi"
+    command "if timeout 3 /usr/bin/redis-cli -s /var/run/redis/redis-#{new_resource.name}.sock --no-auth-warning -a '#{inst_config['requirepass']}' INFO > /tmp/redis-monitoring-status-#{inst_config['port']}.tmp; then sleep 1; mv /tmp/redis-monitoring-status-#{inst_config['port']}.tmp /tmp/redis-monitoring-status-#{inst_config['port']}; else rm -f /tmp/redis-monitoring-status-#{inst_config['port']}.tmp; fi"
     user 'root'
     shell '/bin/bash'
   end
